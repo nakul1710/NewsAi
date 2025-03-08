@@ -7,9 +7,14 @@ function Navbar() {
   
   const [isOpen, setIsOpen] =useState(false);
 
+
+  const handleClick = () => {
+    setIsOpen(!isOpen)
+
+  }
   return (
     <>
-       <nav className='h-16'>
+        <nav className='h-16'>
 
           <div className='flex items-center justify-between mx-auto '>
           
@@ -35,11 +40,23 @@ function Navbar() {
           </ul>
 
 
-      <div className='flex space-x-4 item-center justify-center'>
+       <div className='md:flex space-x-4 item-center justify-center'>
+        <link to='/Login' className='hidden md:block'>
         <Button variant="white" >Login</Button>
-        <Button className="Md:hidden"><X/></Button>
+        </link>
+          
+
+        <link to='/register' className='hidden md:block'>
+          {' '}
+          <Button variant="white">Register</Button>
+        </link>  
+  
+        <button onClick={handleClick} className="md:hidden">
+          {isOpen ? <X/> : <Menu/>}
+        </button>
+
         <Button variant="white">Register</Button>
-      </div>
+       </div>
 
        </nav>
     </>
